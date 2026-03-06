@@ -1,6 +1,7 @@
 # Neovim config
 
 ## TODO
+* __Unbind tab from autocomplete__
 * fix sign_define error
 * markdown preview
 * latex
