@@ -1,3 +1,4 @@
+-- TODO: add keybinds
 return {
 	"xeluxee/competitest.nvim",
 	dependencies = "muniftanjim/nui.nvim",
