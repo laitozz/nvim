@@ -9,29 +9,9 @@ local config = function()
 	local lsp_capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
 	-- lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
-	local lsp_remaps = function(bufnr)
-		local toggle_virtual_lines = function()
-			_G.virtual_lines_enabled = not _G.virtual_lines_enabled
-			vim.diagnostic.config({virtual_lines = _G.virtual_lines_enabled})
-		end
-		local opts = { remap = true, silent = true, buffer = bufnr }
-		-- TODO: figure out a better way to do this
-		-- or only show diagnostics on the current line
-		vim.keymap.set('n', '[ov', '<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>', opts)
-		vim.keymap.set('n', ']ov', '<cmd>lua vim.diagnostic.config{virtual_text=true}<cr>', opts)
-		vim.keymap.set('n', '[v', '<cmd>lua vim.diagnostic.config{virtual_lines=false}<cr>', opts)
-		vim.keymap.set('n', ']v', '<cmd>lua vim.diagnostic.config{virtual_lines=true}<cr>', opts)
-		-- TODO: figure out a better bind for this
-		vim.keymap.set('n', '<leader>v', function() toggle_virtual_lines() end, opts)
-		vim.keymap.set('n', 'grd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-	end
 
-	local function lsp_attach(client, bufnr)
-		lsp_remaps(bufnr)
-	end
 
 	local opts = {
-		on_attach = lsp_attach,
 		capabilities = lsp_capabilities,
 		autostart = true,
 		single_file_support = true,
