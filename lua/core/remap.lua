@@ -100,22 +100,32 @@ map( 'n', '<leader>D', ':mark t | w | %bd | e# | bd# <cr> `t', desc("Delete othe
 map('v', 'K', '', opts)
 map('v', 'J', '', opts)
 
-map('n', '<leader>cc', '<cmd>cd $NVIM<cr>', opts)
-map('n', '<leader>co', '<cmd>cd $HOME/Documents/Notes<cr>', opts)
-
 --Terminal window, visual glitches
 map('n', '<leader>T', ':vs<cr>:terminal<cr>i', opts)
 
-
--- --CompetiTest
--- map('n', '<leader>cr', '<cmd>CompetiTest run<cr>', opts)
--- map('n', '<leader>cc', '<cmd>CompetiTest receive contest<cr>', opts)
--- map('n', '<leader>cp', '<cmd>CompetiTest receive problem<cr>', opts)
--- map('n', '<leader>ct', '<cmd>CompetiTest receive testcases<cr>', opts)
--- map('n', '<leader>cu', '<cmd>CompetiTest show_ui<cr>', opts)
--- map('n', '<leader>ca', '<cmd>CompetiTest add_testcase<cr>', opts)
--- map('n', '<leader>ce', '<cmd>CompetiTest edit_testcase<cr>', opts)
--- map('n', '<leader>ci', '<cmd>CompetiTest <cr>', opts)
-
 map('n', '+', '<cmd>make<cr>', opts)
 map('n', '<leader><cr>', '<cmd>make<cr>', opts)
+
+-- Hot reload config 
+-- TODO: can this be done with persistance?
+map('n', '<leader>qr', function()
+  local session = vim.fn.stdpath('state') .. '/restart_session.vim'
+  vim.cmd('mksession! ' .. vim.fn.fnameescape(session))
+  vim.cmd('restart source ' .. vim.fn.fnameescape(session))
+end, { desc = 'Restart Neovim' })
+
+-- 
+local toggle_virtual_lines = function()
+	_G.virtual_lines_enabled = not _G.virtual_lines_enabled
+	vim.diagnostic.config({virtual_lines = _G.virtual_lines_enabled})
+end
+local opts = { remap = true, silent = true, buffer = bufnr }
+-- TODO: figure out a better way to do this
+-- or only show diagnostics on the current line
+vim.keymap.set('n', '[ov', '<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>', opts)
+vim.keymap.set('n', ']ov', '<cmd>lua vim.diagnostic.config{virtual_text=true}<cr>', opts)
+vim.keymap.set('n', '[v', '<cmd>lua vim.diagnostic.config{virtual_lines=false}<cr>', opts)
+vim.keymap.set('n', ']v', '<cmd>lua vim.diagnostic.config{virtual_lines=true}<cr>', opts)
+-- TODO: figure out a better bind for this
+vim.keymap.set('n', '<leader>v', function() toggle_virtual_lines() end, opts)
+vim.keymap.set('n', 'grd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
