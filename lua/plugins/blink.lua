@@ -1,6 +1,6 @@
 return {
 	'saghen/blink.cmp',
-	version = '*',
+	version = '1.*', -- pinned to v1
 	dependencies = {
 		{
 			"L3MON4D3/LuaSnip",
@@ -73,13 +73,15 @@ return {
 		},
 		keymap = {
 			preset = "default",
-			-- wanted behaviour: do not select initially, tab selects first one
-			['<Tab>'] = {
-				function(cmp)
-					return cmp.select_and_accept()
-				end,
-				'fallback'
-			},
+			-- Currently not using tab at all for completions
+			-- ['<Tab>'] = {
+			-- 	function(cmp)
+			-- 		return cmp.select_and_accept()
+			-- 	end,
+			-- 	'fallback'
+			-- },
+			['<C-j>'] = { 'select_and_accept' },
+			['<Cr>'] = { 'accept' },
 			['<C-n>'] = { 'show', 'select_next', 'fallback' },
 			['<C-p>'] = { 'show', 'select_prev', 'fallback' },
 
