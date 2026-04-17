@@ -39,6 +39,7 @@ return {
 	'nvim-treesitter/nvim-treesitter',
 	build = ":TSUpdate",
 	event = 'VeryLazy',
+	branch = 'master',
 	config = config,
 	dependencies = {
 		{

@@ -8,3 +8,5 @@
 * update lsp to nvim 0.11
 * check if autocompletions works in lazy nvim opts field in LazyVim
     * if so, implement that
+* Fix lspconfig
+* monitor treesitter, maybe switch to main branch?
