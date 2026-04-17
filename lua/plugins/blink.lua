@@ -1,6 +1,7 @@
 return {
 	'saghen/blink.cmp',
-	version = '*',
+	lazy = false, -- Very fast
+	version = '1.*', -- pinned to v1
 	dependencies = {
 		{
 			"L3MON4D3/LuaSnip",
@@ -73,13 +74,16 @@ return {
 		},
 		keymap = {
 			preset = "default",
-			-- wanted behaviour: do not select initially, tab selects first one
-			['<Tab>'] = {
-				function(cmp)
-					return cmp.select_and_accept()
-				end,
-				'fallback'
-			},
+			-- Currently not using tab at all for completions
+			-- ['<Tab>'] = {
+			-- 	function(cmp)
+			-- 		return cmp.select_and_accept()
+			-- 	end,
+			-- 	'fallback'
+			-- },
+			-- TODO: add snippet jumping to C-j and C-k
+			['<C-j>'] = { 'select_and_accept' },
+			['<Cr>'] = { 'accept', 'fallback' },
 			['<C-n>'] = { 'show', 'select_next', 'fallback' },
 			['<C-p>'] = { 'show', 'select_prev', 'fallback' },
 
