@@ -1,5 +1,6 @@
 return {
 	'saghen/blink.cmp',
+	lazy = false, -- Very fast
 	version = '1.*', -- pinned to v1
 	dependencies = {
 		{
@@ -80,8 +81,9 @@ return {
 			-- 	end,
 			-- 	'fallback'
 			-- },
+			-- TODO: add snippet jumping to C-j and C-k
 			['<C-j>'] = { 'select_and_accept' },
-			['<Cr>'] = { 'accept' },
+			['<Cr>'] = { 'accept', 'fallback' },
 			['<C-n>'] = { 'show', 'select_next', 'fallback' },
 			['<C-p>'] = { 'show', 'select_prev', 'fallback' },
 

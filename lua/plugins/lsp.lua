@@ -1,62 +1,24 @@
 local config = function()
+	-- TODO: setup mason for non-nixos machines
 	local ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd", "glsl_analyzer", "nixd", "nil_ls", "csharp_ls" }
 	require('mason').setup()
 	-- require("mason-lspconfig").setup {
 	-- 	ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd" },
 	-- }
 
-	-- local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-	local lsp_capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
-	-- lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+	-- TODO: lspconfig
+	vim.lsp.enable({
+		"lua_ls",
+		"nil_ls",
+		"nixd",
+		"bashls",
+		-- TODO: find a way to setup following non-lsp tools
+		-- "clang-tools",
+		-- "gdb",
+		-- "alejandra"
+	})
 
-	local lsp_remaps = function(bufnr)
-		local toggle_virtual_lines = function()
-			_G.virtual_lines_enabled = not _G.virtual_lines_enabled
-			vim.diagnostic.config({virtual_lines = _G.virtual_lines_enabled})
-		end
-		local opts = { remap = true, silent = true, buffer = bufnr }
-		-- TODO: figure out a better way to do this
-		-- or only show diagnostics on the current line
-		vim.keymap.set('n', '[ov', '<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>', opts)
-		vim.keymap.set('n', ']ov', '<cmd>lua vim.diagnostic.config{virtual_text=true}<cr>', opts)
-		vim.keymap.set('n', '[v', '<cmd>lua vim.diagnostic.config{virtual_lines=false}<cr>', opts)
-		vim.keymap.set('n', ']v', '<cmd>lua vim.diagnostic.config{virtual_lines=true}<cr>', opts)
-		-- TODO: figure out a better bind for this
-		vim.keymap.set('n', '<leader>v', function() toggle_virtual_lines() end, opts)
-		vim.keymap.set('n', 'grd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-	end
-
-	local function lsp_attach(client, bufnr)
-		lsp_remaps(bufnr)
-	end
-
-	local opts = {
-		on_attach = lsp_attach,
-		capabilities = lsp_capabilities,
-		autostart = true,
-		single_file_support = true,
-	}
-
-
-	local setup_servers = function(server_name)
-			local lspconfig = require('lspconfig')
-			local has_custom_opts, custom_opts = pcall(require, "util.lsp." .. server_name)
-			lspconfig[server_name].setup(has_custom_opts and vim.tbl_deep_extend("force", opts, custom_opts) or opts)
-	end
-	if vim.g.system_id == 'nixos' then
-		for _, server_name in ipairs(ensure_installed) do
-			setup_servers(server_name)
-		end
-	else
-		-- vim.list_extend(ensure_installed, extra_tools)
-		-- require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-		-- require('mason-lspconfig').setup { handlers = { setup_servers } }
-		require('mason-lspconfig').setup_handlers({
-			setup_servers
-		})
-	end
-
-
+	-- DIAGNOSTICS -- 
 
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -89,7 +51,8 @@ local config = function()
 	})
 end
 
-return { 'neovim/nvim-lspconfig',
+return {
+	'neovim/nvim-lspconfig',
 	lazy = false,
 	config = config,
 	dependencies = {
