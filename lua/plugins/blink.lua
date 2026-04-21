@@ -74,24 +74,19 @@ return {
 		},
 		keymap = {
 			preset = "default",
-			-- Currently not using tab at all for completions
-			-- ['<Tab>'] = {
-			-- 	function(cmp)
-			-- 		return cmp.select_and_accept()
-			-- 	end,
-			-- 	'fallback'
-			-- },
-			-- TODO: add snippet jumping to C-j and C-k
-			['<C-j>'] = { 'select_and_accept' },
+			['<Tab>'] = { 'select_and_accept', 'fallback' },
+			['<C-j>'] = { 'snippet_forward', 'fallback' },
+			['<C-k>'] = { 'snippet_backward', 'fallback' },
 			['<Cr>'] = { 'accept', 'fallback' },
 			['<C-n>'] = { 'show', 'select_next', 'fallback' },
 			['<C-p>'] = { 'show', 'select_prev', 'fallback' },
-
+			['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end }
 		},
 		cmdline = {
 			enabled = true,
 			-- wanted behaviour: do not select initially, tab cycles through
 			keymap = {
+				-- These need a function that returns false, so fallback is also activated
 				['<C-p>'] = { function(cmp) cmp.hide() end, 'fallback' },
 				['<C-n>'] = { function(cmp) cmp.hide() end, 'fallback' },
 				['<cr>'] = { 'accept_and_enter', 'fallback' },
