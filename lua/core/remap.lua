@@ -66,14 +66,10 @@ map('n', '<C-u>', '<C-u>zz', opts)
 -- TODO: convert to neovim upstream equivalents
 
 -- Luasnip select
-map("i", "<M-n>", "<Plug>luasnip-next-choice", opts)
-map("s", "<M-n>", "<Plug>luasnip-next-choice", opts)
-map("i", "<M-p>", "<Plug>luasnip-prev-choice", opts)
-map("s", "<M-p>", "<Plug>luasnip-prev-choice", opts)
-map('i', '<M-j>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
-map('s', '<M-j>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
-map('i', '<M-k>', '<cmd>lua require("luasnip").jump(-1)<cr>', opts)
-map('s', '<M-k>', '<cmd>lua require("luasnip").jump(-1)<cr>', opts)
+map({ "i", "s" }, "<M-n>", "<Plug>luasnip-next-choice", opts)
+map({ "i", "s" }, "<M-p>", "<Plug>luasnip-prev-choice", opts)
+map({ "i", "s" }, '<M-j>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
+map({ "i", "s" }, '<M-k>', '<cmd>lua require("luasnip").jump(-1)<cr>', opts)
 
 -- -- Dap keymaps
 -- map('n', '<leader>B', ':lua require("dap").toggle_breakpoint()<cr>', opts)
