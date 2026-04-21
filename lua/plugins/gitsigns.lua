@@ -30,6 +30,7 @@ return {
 	keys = {
 		{ "gk", "<cmd>Gitsigns toggle_current_line_blame<cr>" },
 		{ "gK", "<cmd>Gitsigns blame_line<cr>" },
+		{ "gb", "<cmd>Gitsigns blame<cr>" },
 		{ "gh", "<cmd>Gitsigns stage_hunk<cr>" },
 		{ "gH", "<cmd>Gitsigns undo_stage_hunk<cr>" },
 	}
