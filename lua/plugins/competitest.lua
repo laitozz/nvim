@@ -3,7 +3,11 @@ return {
 	"xeluxee/competitest.nvim",
 	dependencies = "muniftanjim/nui.nvim",
 	cmd = "CompetiTest",
-	keys = "<leader>c",
+	keys = {
+		{ "<leader>cr", "<cmd>CompetiTest run<cr>", desc = "CompetiTest run" },
+		{ "<leader>ca", "<cmd>CompetiTest add_testcase<cr>", desc = "CompetiTest add testcase" },
+		{ "<leader>cu", "<cmd>CompetiTest show_ui<cr>", desc = "CompetiTest show ui" },
+	},
 	opts = {
 		testcases_use_single_file = true,
 		received_contests_directory = "$(HOME)/projects/$(JUDGE)/$(CONTEST)",
