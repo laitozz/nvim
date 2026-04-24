@@ -12,6 +12,8 @@ local config = function()
 		"nil_ls",
 		"nixd",
 		"bashls",
+		"clangd",
+		"rust_analyzer",
 		-- TODO: find a way to setup following non-lsp tools
 		-- "clang-tools",
 		-- "gdb",
