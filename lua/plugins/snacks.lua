@@ -6,9 +6,8 @@ return {
 
 		bigfile = { enabled = true },
 		-- bufdelete = {enabled = true },
-		-- dashboard = { enabled = true },
 		explorer = { enabled = true },
-		-- indent = { enabled = false },
+		indent = { enabled = true },
 		input = { enabled = true },
 		image = { enabled = true },
 		-- profiler = { enabled = true },
@@ -18,6 +17,7 @@ return {
 		-- scroll = { enabled = true },
 		statuscolumn = { enabled = true },
 		-- words = { enabled = true },
+		-- dashboard = { enabled = true },
 		picker = {
 			layout = {
 				preset = function()
