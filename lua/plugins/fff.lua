@@ -18,7 +18,7 @@ return {
 	},
 	lazy = false, -- the plugin lazy-initialises itself
 	keys = {
-		{ "<M-n>", function() require('fff').find_files() end, desc = 'FFFind files' },
+		{ "<leader><space>", function() require('fff').find_files() end, desc = 'FFFind files' },
 		{ "<M-g>", function() require('fff').live_grep() end, desc = 'LiFFFe grep' },
 		-- { "<leader>fz",
 		-- 	function() require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end,
