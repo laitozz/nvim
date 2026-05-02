@@ -8,6 +8,7 @@ return {
 		keymaps = {
 			["<C-p>"] = false,
 			["<M-p>"] = "actions.preview",
+			["q"] = "actions.close",
 			["gp"] = function()
 				require("oil").set_columns({ "permissions", "size", "icon" })
 			end,

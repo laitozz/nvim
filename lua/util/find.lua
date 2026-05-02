@@ -16,6 +16,11 @@ M.directories = function()
 			height = 0.45,
 			width = 0.45
 		},
+		actions = {
+			["default"] = function(selected)
+				require("oil").open(selected[0])
+			end
+		}
 	})
 end
 

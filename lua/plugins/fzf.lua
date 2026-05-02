@@ -1,6 +1,15 @@
 return {
 	"ibhagwan/fzf-lua",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		{
+			"elanmed/fzf-lua-frecency.nvim",
+			opts = true
+		}
+	},
+	---@module "fzf-lua"
+	---@type fzf-lua.Config|{}
+	---@diagnostic disable: missing-fields
 	opts = {
 		winopts = {
 			preview = {

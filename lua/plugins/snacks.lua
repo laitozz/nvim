@@ -28,8 +28,8 @@ return {
 	},
 
 	keys = {
-		{ "<M-n>",      function() Snacks.picker.smart() end,                 desc = "Smart Find Files" },
-		{ "<leader>ss", function() Snacks.picker() end,                       desc = "Picker picker" },
+		{ "<leader><space>", function() Snacks.picker.smart() end,                 desc = "Smart Find Files" },
+		{ "<leader>sS", function() Snacks.picker() end,                       desc = "Picker picker" },
 		{ "<leader>.",  function() Snacks.scratch() end,                      desc = "Toggle Scratch Buffer" },
 		{ "<leader>S",  function() Snacks.scratch.select() end,               desc = "Select Scratch Buffer" },
 		-- git
