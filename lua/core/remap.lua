@@ -15,7 +15,7 @@ map('n', '<leader>l', '<cmd>Lazy<cr>', opts)
 map('i', '<C-BS>', '<C-w>', opts)
 
 --Buffer navigation
-map('n', '<M-l>', '<C-^>', opts)
+map('n', '<M-a>', '<C-^>', opts)
 
 --Emacs-like insert navigation
 map('i', '<C-b>', '<left>', opts)
