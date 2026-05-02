@@ -12,7 +12,9 @@ vim.g.mapleader = " "
 --plugin specific
 map('n', '<leader>l', '<cmd>Lazy<cr>', opts)
 
+-- Delete words with backspace
 map('i', '<C-BS>', '<C-w>', opts)
+map('i', '<M-BS>', '<C-w>', opts)
 
 --Buffer navigation
 map('n', '<M-a>', '<C-^>', opts)

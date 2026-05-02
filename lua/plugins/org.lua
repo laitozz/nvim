@@ -29,6 +29,9 @@ return {
 			opts = {
 				list = false
 			}
-		}
+		},
+		'nvim-orgmode/org-bullets.nvim',
+		-- TODO: add org-roam
+		-- https://github.com/chipsenkbeil/org-roam.nvim
 	},
  }
