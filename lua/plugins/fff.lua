@@ -16,6 +16,7 @@ return {
 			preview_size = 0.6
 		}
 	},
+	enabled = false, -- might cause crashing
 	lazy = false, -- the plugin lazy-initialises itself
 	keys = {
 		{ "<leader><space>", function() require('fff').find_files() end, desc = 'FFFind files' },
