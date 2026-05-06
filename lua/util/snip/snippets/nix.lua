@@ -27,6 +27,25 @@ local parse = require("luasnip.util.parser").parse_snippet
 
 local snippets = {
 	s(
+		"aspn",
+		fmta([[
+		<>.<>.nixos = { pkgs, ... }: {
+			<>
+		}
+		]],
+			-- "<>.<>.nixos = {\n\t<>\n}",
+			{
+				c(2, {
+					t("n"),
+					t("i"),
+					i(1)
+				}),
+				i(1, "name"),
+				i(3, "this")
+			}
+		)
+	),
+	s(
 		"map",
 		fmt(
 			"map('{}', '{}', '{}', opts)",

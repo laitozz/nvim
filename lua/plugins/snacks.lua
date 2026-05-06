@@ -46,7 +46,7 @@ return {
 		{ "<leader>sb", function() Snacks.picker.lines() end,                 desc = "Buffer Lines" },
 		{ "<leader>sB", function() Snacks.picker.grep_buffers() end,          desc = "Grep Open Buffers" },
 		{ "<leader>sg", function() Snacks.picker.grep() end,                  desc = "Grep" },
-		{ "<leader>sw", function() Snacks.picker.grep_word() end,             desc = "Visual selection or word", mode = { "n", "x" } },
+		{ "<leader>sW", function() Snacks.picker.grep_word() end,             desc = "Visual selection or word", mode = { "n", "x" } },
 		-- search
 		{ '<leader>s"', function() Snacks.picker.registers() end,             desc = "Registers" },
 		{ '<leader>s/', function() Snacks.picker.search_history() end,        desc = "Search History" },
@@ -75,7 +75,7 @@ return {
 		{ "gI",         function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
 		{ "gy",         function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto T[y]pe Definition" },
 		{ "gs",         function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
-		{ "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+		{ "<leader>sw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
 		-- Org
 		{ "<leader>of", function() Snacks.picker.files({cwd = "~/org"}) end, desc = "Org agenda files"},
 		-- Other

@@ -5,7 +5,7 @@ return {
 	dependencies = {
 		{
 			"L3MON4D3/LuaSnip",
-			version = 'v3.*',
+			version = 'v2.*',
 			config = function ()
 				require("util.snip")
 			end,
@@ -75,8 +75,8 @@ return {
 		keymap = {
 			preset = "default",
 			['<Tab>'] = { 'select_and_accept', 'fallback' },
-			['<C-j>'] = { 'snippet_forward', 'fallback' },
-			['<C-k>'] = { 'snippet_backward', 'fallback' },
+			['<C-j>'] = { function(cmp) require('luasnip').expand() end },
+			['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
 			['<Cr>'] = { 'accept', 'fallback' },
 			['<C-n>'] = { 'show', 'select_next', 'fallback' },
 			['<C-p>'] = { 'show', 'select_prev', 'fallback' },
