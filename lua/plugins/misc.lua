@@ -11,6 +11,31 @@ return {
 		config = true,
 	},
 	{
+		'Wansmer/treesj',
+		dependencies = { 'nvim-treesitter/nvim-treesitter' },
+		keys = {
+			{ "gS", "<cmd>TSJSplit<cr>" },
+			{ "gJ", "<cmd>TSJJoin<cr>" },
+		},
+		cmd = { "TSJToggle", "TSJJoin", "TSJSplit" },
+		opts = {
+			use_default_keymaps = false
+		}
+	},
+	{
+		'abecodes/tabout.nvim',
+		lazy = false,
+		event = "InsertEnter",
+		dependencies = { 'nvim-treesitter/nvim-treesitter' },
+		keys = {
+			{ "<C-j>", "<plug>(TaboutMulti)", mode = 'i' }
+		},
+		opts = {
+			tabkey = "",
+			act_as_tab = false,
+		}
+	},
+	{
 		'nvim-neo-tree/neo-tree.nvim',
 		dependencies = {
 			{ 'muniftanjim/nui.nvim' },
