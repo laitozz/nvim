@@ -68,7 +68,9 @@ return {
 		keymap = {
 			preset = "default",
 			['<Tab>'] = { 'select_and_accept', 'fallback' },
-			['<C-j>'] = { function(cmp) require('luasnip').expand() end },
+			['<C-j>'] = {
+				function(cmp) require('luasnip').expand() end
+			},
 			['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
 			['<Cr>'] = { 'accept', 'fallback' },
 			['<C-n>'] = { 'select_next', 'fallback' },

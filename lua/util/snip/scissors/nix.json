@@ -1,0 +1,40 @@
+{
+  "asph": {
+    "body": [
+      "{",
+      "  hw.${1:name}.nixos = { pkgs, ... }: {",
+      "\t  ${2:}",
+      "  };",
+      "}"
+    ],
+    "prefix": "asphw"
+  },
+  "asphm": {
+    "body": [
+      "{",
+      "  sw.${1:name}.homeManager = { pkgs, ... }: {",
+      "\t  ${2:}",
+      "  };",
+      "}"
+    ],
+    "prefix": "asphm"
+  },
+  "aspn": {
+    "body": [
+      "{",
+      "  sw.${1:name}.nixos = { pkgs, ... }: {",
+      "\t  ${2:}",
+      "  };",
+      "}"
+    ],
+    "prefix": "aspn"
+  },
+  "package": {
+    "body": [
+      "environment.systemPackages = with pkgs; [",
+      "  ${1}",
+      "];"
+    ],
+    "prefix": "pack"
+  }
+}
