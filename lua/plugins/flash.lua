@@ -22,7 +22,7 @@ return {
 		autohide = false,
 		modes = {
 			search = {
-				enabled = true,
+				enabled = false, -- use \ key instead
 			},
 			char = {
 				enabled = false,

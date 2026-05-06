@@ -1,0 +1,11 @@
+{
+  "lazyspec": {
+    "body": [
+      "return {",
+      "\t\"${1}\",",
+      "\t${2}",
+      "}"
+    ],
+    "prefix": "lazyspec"
+  }
+}

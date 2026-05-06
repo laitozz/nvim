@@ -3,15 +3,8 @@ return {
 	lazy = false, -- Very fast
 	version = '1.*', -- pinned to v1
 	dependencies = {
-		{
-			"L3MON4D3/LuaSnip",
-			version = 'v2.*',
-			config = function ()
-				require("util.snip")
-			end,
-			dependencies = { "rafamadriz/friendly-snippets" },
-		},
-
+		"L3MON4D3/LuaSnip",
+		"rafamadriz/friendly-snippets",
 		{
 			"saghen/blink.compat",
 			opts = {
@@ -78,8 +71,8 @@ return {
 			['<C-j>'] = { function(cmp) require('luasnip').expand() end },
 			['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
 			['<Cr>'] = { 'accept', 'fallback' },
-			['<C-n>'] = { 'show', 'select_next', 'fallback' },
-			['<C-p>'] = { 'show', 'select_prev', 'fallback' },
+			['<C-n>'] = { 'select_next', 'fallback' },
+			['<C-p>'] = { 'select_prev', 'fallback' },
 			['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end }
 		},
 		cmdline = {
