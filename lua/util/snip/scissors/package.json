@@ -12,6 +12,12 @@
           "nix"
         ],
         "path": "./nix.json"
+      },
+      {
+        "language": [
+          "sh"
+        ],
+        "path": "./sh.json"
       }
     ]
   },
