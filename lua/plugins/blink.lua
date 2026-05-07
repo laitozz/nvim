@@ -68,9 +68,14 @@ return {
 		keymap = {
 			preset = "default",
 			['<Tab>'] = { 'select_and_accept', 'fallback' },
-			['<C-j>'] = {
-				function(cmp) require('luasnip').expand() end
-			},
+			['<C-j>'] = { function(cmp)
+				ls = require('luasnip')
+				if ls.expandable() then
+					cmp.cancel()  -- or cmp.hide()
+					vim.schedule(ls.expand)  -- wait for blink to close
+					return true -- don't execute next command
+				end
+			end, 'fallback' },
 			['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
 			['<Cr>'] = { 'accept', 'fallback' },
 			['<C-n>'] = { 'select_next', 'fallback' },

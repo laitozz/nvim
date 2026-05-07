@@ -11,13 +11,15 @@ local config = function ()
 	require('luasnip.loaders.from_vscode').lazy_load({
 		paths = "./lua/util/snip/scissors"
 	})
+	-- For friendly-snippets
+	require('luasnip.loaders.from_vscode').lazy_load()
 
 	require('luasnip.loaders.from_lua').lazy_load {
 		paths = "./lua/util/snip/snippets"
 	}
 
 	-- Open luasnip log with a command
-	vim.api.nvim_create_user_command("LuasnipLog", "lua require('luasnip').log.open()", {})
+	vim.api.nvim_create_user_command("LuasnipLog", function() require('luasnip').log.open() end, {})
 end
 
 return {
