@@ -17,8 +17,10 @@ M.directories = function()
 			width = 0.45
 		},
 		actions = {
+			-- Open default dir browser
 			["default"] = function(selected)
-				require("oil").open(selected[0])
+				local dir = selected[1]:sub(7)
+				vim.cmd("e " .. dir)
 			end
 		}
 	})
