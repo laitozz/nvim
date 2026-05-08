@@ -12,7 +12,6 @@ return {
 	},
 	{
 		'Wansmer/treesj',
-		dependencies = { 'nvim-treesitter/nvim-treesitter' },
 		keys = {
 			{ "gS", "<cmd>TSJSplit<cr>" },
 			{ "gJ", "<cmd>TSJJoin<cr>" },
@@ -26,7 +25,7 @@ return {
 		'abecodes/tabout.nvim',
 		lazy = false,
 		event = "InsertEnter",
-		dependencies = { 'nvim-treesitter/nvim-treesitter' },
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter' },
 		keys = {
 			{ "<C-j>", "<plug>(TaboutMulti)", mode = 'i' }
 		},

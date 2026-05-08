@@ -1,51 +1,25 @@
 local config = function()
-	local ts = require("nvim-treesitter.configs")
-
-	ts.setup({
-		auto_install = true,
-		ensure_installed = { "rust", "lua", "help", "c", "cpp" }, -- one of "all" or a list of languages
-		ignore_install = { "help", "org" }, -- List of parsers to ignore installing
-		highlight = {
-			enable = true, -- false will disable the whole extension
-			disable = { "markdown", "org" }, -- list of language that will be disabled
-			-- additional_vim_regex_highlighting = {'org'},
-		},
-		indent = {
-			enable = true,
-			disable = { "css" }
-		},
-		endwise = {
-			enable = true,
-		},
-		textobjects = {
-			select = {
-				enable = true,
-				lookahead = true,
-				keymaps = {
-					["af"] = { query = "@function.outer", desc = "outer function" },
-					["if"] = { query = "@function.inner", desc = "inner function" },
-					["aa"] = { query = "@parameter.outer", desc = "outer argument/parameter" },
-					["ia"] = { query = "@parameter.inner", desc = "inner argument/parameter" },
-					["ac"] = { query = "@class.outer", desc = "outer class" },
-					["ic"] = { query = "@class.inner", desc = "inner class" },
-				},
-			},
-		},
-		sync_install = false,
+	require("tree-sitter-manager").setup({
+		-- Default Options
+		ensure_installed = {}, -- list of parsers to install at the start of a neovim session
+		border = nil, -- border style for the window (e.g. "rounded", "single"), if nil, use the default border style defined by 'vim.o.winborder'. See :h 'winborder' for more info.
+		auto_install = true, -- if enabled, install missing parsers when editing a new file
+		highlight = false, -- treesitter highlighting is enabled by default
+	})
+	-- NOTE: workaround for
+	-- https://github.com/romus204/tree-sitter-manager.nvim/issues/54
+	vim.api.nvim_create_autocmd('FileType', {
+		callback = function()
+			pcall(vim.treesitter.start)
+		end,
 	})
 end
 
 return {
-	'nvim-treesitter/nvim-treesitter',
-	build = ":TSUpdate",
-	event = 'VeryLazy',
-	branch = 'master',
+	"romus204/tree-sitter-manager.nvim",
+	dependencies = {}, -- tree-sitter CLI must be installed system-wide
+	lazy = false,
+	keys = {{ "<leader>i t", "<cmd>TSManager<cr>", desc = "Tree Sitter TUI"}},
+	cmd = { "TSManager" },
 	config = config,
-	dependencies = {
-		{
-			"nvim-orgmode/orgmode",
-			"RRethy/nvim-treesitter-endwise",
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		}
-	}
 }
