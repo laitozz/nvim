@@ -10,7 +10,8 @@ map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
 --plugin specific
-map('n', '<leader>l', '<cmd>Lazy<cr>', opts)
+map('n', '<leader>il', '<cmd>Lazy<cr>', opts)
+map('n', '<leader>im', '<cmd>Mason<cr>', opts)
 
 -- Delete words with backspace
 map('i', '<C-BS>', '<C-w>', opts)

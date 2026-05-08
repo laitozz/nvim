@@ -88,7 +88,4 @@ return {
 			},
 		}
 	},
-	keys = {
-		vim.keymap.set('n', '<leader>m', '<cmd>Mason<cr>', {silent = true})
-	}
 }

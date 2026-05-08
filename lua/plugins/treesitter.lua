@@ -19,7 +19,7 @@ return {
 	"romus204/tree-sitter-manager.nvim",
 	dependencies = {}, -- tree-sitter CLI must be installed system-wide
 	lazy = false,
-	keys = {{ "<leader>i t", "<cmd>TSManager<cr>", desc = "Tree Sitter TUI"}},
+	keys = {{ "<leader>it", "<cmd>TSManager<cr>", desc = "Tree Sitter TUI"}},
 	cmd = { "TSManager" },
 	config = config,
 }
