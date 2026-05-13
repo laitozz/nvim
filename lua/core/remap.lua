@@ -113,6 +113,17 @@ map('n', '<leader>qr', function()
   vim.cmd('restart source ' .. vim.fn.fnameescape(session))
 end, { desc = 'Restart Neovim' })
 
+-- Builtin undotree
+local function undotree()
+	vim.cmd.packadd('nvim.undotree')
+	require("undotree").open({
+		title = "undotree",
+		command = "40vnew",
+	})
+end
+
+vim.keymap.set("n", "<leader>u", undotree)
+
 -- 
 local toggle_virtual_lines = function()
 	_G.virtual_lines_enabled = not _G.virtual_lines_enabled
