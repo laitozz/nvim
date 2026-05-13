@@ -8,7 +8,7 @@ return {
 		-- bufdelete = {enabled = true },
 		explorer = { enabled = true },
 		indent = { enabled = true },
-		input = { enabled = true },
+		-- input = { enabled = true }, -- Buggy
 		image = { enabled = true },
 		-- profiler = { enabled = true },
 		notifier = { enabled = true },
