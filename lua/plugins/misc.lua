@@ -27,12 +27,16 @@ return {
 		event = "InsertEnter",
 		-- dependencies = { 'nvim-treesitter/nvim-treesitter' },
 		keys = {
-			{ "<C-j>", "<plug>(TaboutMulti)", mode = 'i' }
+			{ "<C-j>", "<plug>(TaboutMulti)", mode = { 'i', 'n' } }
 		},
 		opts = {
 			tabkey = "",
 			act_as_tab = false,
 		}
+	},
+	{
+		'hiphish/rainbow-delimiters.nvim',
+		event = "VeryLazy",
 	},
 	{
 		'nvim-neo-tree/neo-tree.nvim',
