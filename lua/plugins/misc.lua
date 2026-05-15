@@ -49,6 +49,18 @@ return {
 		}
 	},
 	{
+		"catgoose/nvim-colorizer.lua",
+		event = "BufReadPre",
+		opts = {
+			filetypes = { "*" },
+			options = {
+				parsers = {
+					rgb = { enable = true },
+				}
+			}
+		}
+	},
+	{
 		'theprimeagen/vim-be-good',
 		cmd = "VimBeGood",
 	},
