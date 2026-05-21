@@ -3,7 +3,11 @@ return {
 		"folke/todo-comments.nvim",
 		cmd = { "TodoTrouble", "TodoTelescope", "TodoFzfLua" },
 		event = "BufReadPost",
-		opts = {},
+		opts = {
+			highlight = {
+				multiline = false,
+			},
+		},
 		-- stylua: ignore
 		keys = {
 			{ "]t", function() require("todo-comments").jump_next() end, desc = "Next Todo Comment" },
