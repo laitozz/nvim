@@ -81,7 +81,6 @@ return {
 		-- Other
 		{ "<leader>z",  function() Snacks.zen() end,                          desc = "Toggle Zen Mode" },
 		{ "<leader>Z",  function() Snacks.zen.zoom() end,                     desc = "Toggle Zoom" },
-		{ "<C-t>",      function() Snacks.terminal() end,                     desc = "Toggle Terminal" },
-
+		{ "<leader>t",  function() Snacks.terminal() end,                     desc = "Toggle Terminal" },
 	}
 }
