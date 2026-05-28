@@ -63,7 +63,6 @@ return {
 		{ 'simrat39/rust-tools.nvim' },
 		{
 			"folke/lazydev.nvim",
-			enabled = true,
 			ft = "lua", -- only load on lua files
 			opts = {
 				library = {
@@ -72,6 +71,10 @@ return {
 					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 					{ path = "snacks.nvim" , words = { "Snacks" } }
 				},
+				-- disable when a .luarc.json file is found
+				enabled = function(root_dir)
+					return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
+				end,
 			},
 		},
 
