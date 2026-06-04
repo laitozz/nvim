@@ -1,21 +1,27 @@
 -- TODO: enable lazyloading and make all of this more sensible
 return {
 	{ -- TODO: replace this with pure treesitter textobjects
-		'echasnovski/mini.ai',
+		'nvim-mini/mini.ai',
 		version = false,
-		lazy = false,
-		config = true,
+		lazy    = false,
+		config  = true,
 	},
+	{
+		'nvim-mini/mini.align',
+		version = false,
+		lazy    = false,
+		config  = true
+	}
 	-- {
-	-- 	'echasnovski/mini.surround',
+	-- 	'nvim-mini/mini.surround',
 	-- 	version = false,
-	-- 	lazy = false,
-	-- 	config = true
+	-- 	lazy    = false,
+	-- 	config  = true
 	-- },
 	-- { -- Using treesj instead
-	-- 	'echasnovski/mini.splitjoin',
+	-- 	'nvim-mini/mini.splitjoin',
 	-- 	version = false,
-	-- 	lazy = false,
-	-- 	config = true
+	-- 	lazy    = false,
+	-- 	config  = true
 	-- },
 }
