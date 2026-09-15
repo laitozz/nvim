@@ -66,38 +66,21 @@ map('n', '\'', '`', opts)
 map('n', '<C-d>', '<C-d>zz', opts)
 map('n', '<C-u>', '<C-u>zz', opts)
 
--- TODO: convert to neovim upstream equivalents
-
 -- Luasnip select
 map({ "i", "s" }, "<M-n>", "<Plug>luasnip-next-choice", opts)
 map({ "i", "s" }, "<M-p>", "<Plug>luasnip-prev-choice", opts)
 map({ "i", "s" }, '<M-j>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
 map({ "i", "s" }, '<M-k>', '<cmd>lua require("luasnip").jump(-1)<cr>', opts)
 
--- -- Dap keymaps
--- map('n', '<leader>B', ':lua require("dap").toggle_breakpoint()<cr>', opts)
--- map('n', '<F5>', ':lua require("dap").continue()<cr>', opts)
--- map('n', '<F10>', ':lua require("dap").step_over()<cr>', opts)
--- map('n', '<F11>', ':lua require("dap").step_into()<cr>', opts)
--- map('n', '<F12>', ':lua require("dap").step_out()<cr>', opts)
--- map('n', '<leader>rp', ':lua require("dap").repl.open()<cr>', opts)
--- map('n', '<leader>re', ':lua require("dap").terminate()<cr>', opts)
--- map('n', '<leader>rl', ':lua require("dap").run_last()<cr>', opts)
--- map('n', '<leader>rn', ':RustRunnables<cr>', opts)
--- map('n', '<leader>rd', ':RustDebuggables<cr>', opts)
--- map('n', '<leader>rr', '<cmd>vs | term cargo run<cr>i', opts)
-
-map('n', '<leader>qq', '<cmd>quit<cr>', opts)
-
 --Format on keymap
-map('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', desc("Format buffer"))
-
--- Delete other buffers
-map( 'n', '<leader>D', ':mark t | w | %bd | e# | bd# <cr> `t', desc("Delete other buffers"))
+map('n', 'grf', '<cmd>lua vim.lsp.buf.format()<cr>', desc("Format buffer"))
 
 --Unbind visual K and J
 map('v', 'K', '', opts)
 map('v', 'J', '', opts)
+
+-- Yank to system clipboard
+map('v', 'Y', '"+y', opts)
 
 --Terminal window, visual glitches
 map('n', '<leader>T', ':vs<cr>:terminal<cr>i', opts)
