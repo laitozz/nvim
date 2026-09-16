@@ -39,6 +39,17 @@ return {
 		event = "VeryLazy",
 	},
 	{
+		'nvim-focus/focus.nvim',
+		event = "VeryLazy",
+		opts = {
+			commads = true,
+		},
+		keys = {
+			{ "[of", "<cmd>FocusDisable<cr>", silent = true, noremap = true },
+			{ "]of", "<cmd>FocusEnable<cr>",  silent = true, noremap = true },
+		}
+	},
+	{
 		'nvim-neo-tree/neo-tree.nvim',
 		dependencies = {
 			{ 'muniftanjim/nui.nvim' },
