@@ -88,14 +88,6 @@ map('n', '<leader>T', ':vs<cr>:terminal<cr>i', opts)
 map('n', '+', '<cmd>make<cr>', opts)
 map('n', '<leader><cr>', '<cmd>make<cr>', opts)
 
--- Hot reload config 
--- TODO: can this be done with persistance?
-map('n', '<leader>qr', function()
-  local session = vim.fn.stdpath('state') .. '/restart_session.vim'
-  vim.cmd('mksession! ' .. vim.fn.fnameescape(session))
-  vim.cmd('restart source ' .. vim.fn.fnameescape(session))
-end, { desc = 'Restart Neovim' })
-
 -- Builtin undotree
 local function undotree()
 	vim.cmd.packadd('nvim.undotree')
@@ -104,8 +96,13 @@ local function undotree()
 		command = "40vnew",
 	})
 end
-
 vim.keymap.set("n", "<leader>u", undotree)
+
+-- Clear multicursor
+vim.keymap.set("n", [[q\]], function()
+	local mc_ns = vim.api.nvim_create_namespace('nvim.multicursor')
+	vim.api.nvim_buf_clear_namespace(0, mc_ns, 0, -1)
+end, opts)
 
 -- 
 local toggle_virtual_lines = function()
@@ -122,3 +119,4 @@ vim.keymap.set('n', ']v', '<cmd>lua vim.diagnostic.config{virtual_lines=true}<cr
 -- TODO: figure out a better bind for this
 vim.keymap.set('n', '<leader>v', function() toggle_virtual_lines() end, opts)
 vim.keymap.set('n', 'grd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
+vim.keymap.set('n', 'gK', '<cmd>help!<cr>')
