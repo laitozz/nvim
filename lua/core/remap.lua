@@ -104,19 +104,12 @@ vim.keymap.set("n", [[q\]], function()
 	vim.api.nvim_buf_clear_namespace(0, mc_ns, 0, -1)
 end, opts)
 
--- 
-local toggle_virtual_lines = function()
-	_G.virtual_lines_enabled = not _G.virtual_lines_enabled
-	vim.diagnostic.config({virtual_lines = _G.virtual_lines_enabled})
-end
-local opts = { remap = true, silent = true, buffer = bufnr }
--- TODO: figure out a better way to do this
--- or only show diagnostics on the current line
 vim.keymap.set('n', '[ov', '<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>', opts)
 vim.keymap.set('n', ']ov', '<cmd>lua vim.diagnostic.config{virtual_text=true}<cr>', opts)
 vim.keymap.set('n', '[v', '<cmd>lua vim.diagnostic.config{virtual_lines=false}<cr>', opts)
 vim.keymap.set('n', ']v', '<cmd>lua vim.diagnostic.config{virtual_lines=true}<cr>', opts)
--- TODO: figure out a better bind for this
-vim.keymap.set('n', '<leader>v', function() toggle_virtual_lines() end, opts)
+vim.keymap.set('n', '[ow', '<cmd>set nowrap<cr>', opts)
+vim.keymap.set('n', ']ow', '<cmd>set wrap<cr>', opts)
+
 vim.keymap.set('n', 'grd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
 vim.keymap.set('n', 'gK', '<cmd>help!<cr>')
